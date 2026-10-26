@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-mode="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<title>سرای اشتراک</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body
+  data-dl="{{ .downloadByte }}"
+  data-ul="{{ .uploadByte }}"
+  data-cap="{{ .totalByte }}"
+  data-exp="{{ .expire }}"
+  data-lo="{{ .lastOnline }}"
+  data-en="{{ .enabled }}"
+  data-on="{{ .isOnline }}"
+  data-sub="{{ .subUrl }}"
+  data-ti="{{ .subTitle }}"
+  data-sup="{{ .subSupportUrl }}"
+  data-ann="{{ .announce }}">
+
+<div class="sea" aria-hidden="true"><div class="bubbles" id="bubbles"></div></div>
+
+<main class="shell">
+<div class="shell-in">
+
+  <header class="topbar">
+    <div class="brand"><h1 data-t="title">سرای اشتراک</h1></div>
+    <div class="statusbar">
+      <span class="presence unknown" id="presence"><span class="dot"></span><span id="presenceTx">بررسی...</span></span>
+      <button class="roundbtn" id="soundTg" type="button" aria-label="صدا">♪</button>
+      <button class="roundbtn" id="modeTg" type="button" aria-label="شب و روز">☾</button>
+    </div>
+  </header>
+
+  <div class="alert off" id="offBox" hidden>
+    <div class="alert-t">✕ این اشتراک خاموش است</div>
+    دسترسی این پیکربندی بسته شده. برای پیگیری با پشتیبانی در تماس باش.
+  </div>
+
+  <div class="alert info" id="msgBox" hidden>
+    <div class="alert-t">✦ پیام</div>
+    <span id="msgTx"></span>
+  </div>
+
+  <div class="alert warn" id="dangerBox" hidden>
+    <div class="alert-t">◉ جان ماهی کم شده!</div>
+    نفس ماهی اشتراکت به شماره افتاده! با یه تمدید کوچیک نجاتش بده.
+    <div class="rowbtns"><a class="abtn hot" id="dangerSup" href="#" hidden>نجاتش میدم</a></div>
+  </div>
+
+  <section class="tankcard">
+    <div class="tanktop">
+      <svg class="tank" id="tank" data-mood="idle" data-life="ok" viewBox="0 0 240 220" role="img" aria-label="آکواریوم — جان باقی‌مانده">
+        <defs>
+          <clipPath id="tankClip"><rect x="30" y="40" width="180" height="140" rx="34"/></clipPath>
+          <linearGradient id="aquaG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#7fe7f2"/><stop offset="1" stop-color="#1573b8"/>
+          </linearGradient>
+          <linearGradient id="aquaLowG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#ffc98a"/><stop offset="1" stop-color="#d84f2a"/>
+          </linearGradient>
+          <radialGradient id="shineG" cx="30%" cy="20%" r="90%">
+            <stop offset="0" stop-color="#fff" stop-opacity=".5"/>
+            <stop offset="60%" stop-color="#fff" stop-opacity=".04"/>
+            <stop offset="100%" stop-color="#fff" stop-opacity=".2"/>
+          </radialGradient>
+        </defs>
+        <g clip-path="url(#tankClip)">
+          <rect id="aquaRect" x="30" y="60" width="180" height="120" fill="url(#aquaG)"/>
+          <ellipse id="crest1" class="crest c1" cx="120" cy="60" rx="110" ry="7" fill="#cdf7ff" opacity=".9"/>
+          <ellipse id="crest2" class="crest c2" cx="120" cy="60" rx="100" ry="6" fill="#eafdff" opacity=".7"/>
+          <path d="M30 168 q30 -14 62 -8 q30 -10 60 4 q28 -6 58 8 L240 200 L20 200 Z" fill="#d9bd8f" stroke="#0b1e2e" stroke-width="4" stroke-linejoin="round"/>
+          <circle cx="74" cy="172" r="5" fill="#c2a071"/><circle cx="150" cy="176" r="6" fill="#b8946a"/>
+          <path class="kelp k1" d="M58 172 q-10 -22 2 -38 q10 -14 0 -26" fill="none" stroke="#2f8f5f" stroke-width="7" stroke-linecap="round"/>
+          <path class="kelp k2" d="M182 172 q10 -20 -2 -34 q-8 -12 2 -24" fill="none" stroke="#57b57e" stroke-width="6" stroke-linecap="round"/>
+          <g id="swimLayer"><g class="glide">
+            <g class="flip"><g class="hover">
+              <path class="tailf" d="M78 112 l-24 -15 v30 z" fill="#37b8ff" stroke="#0b1e2e" stroke-width="4" stroke-linejoin="round"/>
+              <ellipse class="corp" cx="102" cy="112" rx="30" ry="20" fill="#5fd0ff" stroke="#0b1e2e" stroke-width="4"/>
+              <path d="M88 124 q15 9 32 0 q-15 6 -32 0z" fill="#d8f4ff" opacity=".85"/>
+              <g class="eyewrap"><circle cx="114" cy="105" r="7" fill="#fff" stroke="#0b1e2e" stroke-width="3"/><circle class="pupil" cx="116" cy="105" r="3.2" fill="#0b1e2e"/></g>
+              <g class="xxx"><path d="M109 100 l10 10 M119 100 l-10 10" fill="none" stroke="#0b1e2e" stroke-width="3.4" stroke-linecap="round"/></g>
+              <path class="mouth" d="M128 117 q7 4 0 8" fill="none" stroke="#0b1e2e" stroke-width="3.4" stroke-linecap="round"/>
+              <g class="drops"><ellipse cx="113" cy="117" rx="3.4" ry="5" fill="#8fdcff" stroke="#0b1e2e" stroke-width="2.4"/></g>
+              <g class="glint"><path d="M144 74 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z" fill="#fff" stroke="#0b1e2e" stroke-width="2.2" stroke-linejoin="round"/></g>
+              <g class="sweat"><path d="M130 86 q5 7 5 10.5 a5 5 0 0 1 -10 0 q0 -3.5 5 -10.5z" fill="#8fdcff" stroke="#0b1e2e" stroke-width="2.2" stroke-linejoin="round"/></g>
+              <g class="snore"><text x="138" y="80">z</text><text x="148" y="66" font-size="12">z</text></g>
+            </g></g>
+          </g></g>
+          <circle class="rise" cx="132" cy="156" r="3.2" fill="#fff" opacity=".8"/>
+          <circle class="rise" cx="144" cy="162" r="2.3" fill="#fff" opacity=".8" style="animation-delay:.9s"/>
+          <circle class="rise" cx="124" cy="160" r="2" fill="#fff" opacity=".8" style="animation-delay:1.7s"/>
+        </g>
+        <rect x="30" y="40" width="180" height="140" rx="34" fill="url(#shineG)" stroke="#0b1e2e" stroke-width="5"/>
+        <path d="M52 58 a60 60 0 0 1 28 -20" stroke="#fff" stroke-width="8" fill="none" opacity=".7" stroke-linecap="round"/>
+        <rect x="86" y="26" width="68" height="16" rx="8" fill="#eaf7ff" stroke="#0b1e2e" stroke-width="5"/>
+      </svg>
+    </div>
+
+    <div class="drawerbox">
+      <div class="hero">
+        <div class="hero-k">◍ جان باقی‌مانده</div>
+        <div class="hero-v" id="leftTx">—</div>
+        <div class="hero-s">از <span id="capTx">—</span> • <span id="tickTx">—</span></div>
+        <div class="gauge"><i id="gaugeFill"></i></div>
+      </div>
+      <div class="grid4">
+        <div class="cell"><div class="cell-k">▼ دانلود</div><div class="cell-v" id="dlTx">—</div></div>
+        <div class="cell"><div class="cell-k">▲ آپلود</div><div class="cell-v" id="ulTx">—</div></div>
+        <div class="cell"><div class="cell-k">∑ مصرف کل</div><div class="cell-v" id="useTx">۰</div></div>
+        <div class="cell"><div class="cell-k">◷ اعتبار</div><div class="cell-v" id="dayTx">—</div><div class="cell-h" id="expTx">—</div></div>
+      </div>
+      <div class="actiongrid">
+        <button class="abtn hot" type="button" id="copyMain">کپی لینک اشتراک</button>
+        <button class="abtn cool" type="button" id="qrMain">نمایش QR</button>
+        <a class="abtn line" id="jsonA" href="#">JSON</a>
+        <a class="abtn grape" id="clashA" href="#">Clash</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="listcard">
+    <div class="listhead"><span>◈ کانفیگ‌ها</span><span class="sp"></span><span class="nchip" id="cfgN">—</span></div>
+    <div id="rows"></div>
+    <noscript><div class="tiny">جاوااسکریپت خاموش است:</div>{{ range .links }}<textarea readonly rows="2" class="ltrbox" style="width:100%">{{ . }}</textarea>{{ end }}</noscript>
+  </section>
+
+  <footer class="tail"><a class="abtn hot" id="tailSup" href="#" hidden>گفت‌وگو با پشتیبانی</a></footer>
+</div>
+</main>
+
+<div id="linkSrc" hidden>{{ range $i, $link := .links }}<div class="lsrc"><span class="u">{{ $link }}</span><span class="e">{{ if lt $i (len $.emails) }}{{ index $.emails $i }}{{ end }}</span></div>{{ end }}</div>
+
+<div class="sheet" id="qrSheet" hidden>
+  <div class="sheet-in"><div class="sheet-card">
+    <h3>اسکن کن!</h3>
+    <div class="qrsub ltr" id="qrSub"></div>
+    <div class="qrbox" id="qrBox"></div>
+    <div class="rowbtns"><button class="abtn cool" type="button" id="qrCp">کپی لینک</button><button class="abtn hot" type="button" id="qrX">بستن</button></div>
+  </div></div>
+</div>
+
+<div class="toastbar"><div class="toastmsg" id="toastMsg"><span class="ttx"></span></div></div>
+<script src="./app.js"></script>
+</body>
+</html>
